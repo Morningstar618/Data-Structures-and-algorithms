@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <limits.h>
 
 int *bubbleSort(int arr[], int len) {
 	int sorted = 0;
@@ -30,10 +30,32 @@ int *bubbleSort(int arr[], int len) {
 	return s_arr;
 }
 
+int *selectionSort(int arr[], int len) {
+	int i, j, x;
+
+	for (i = 0; i < len; i++) {	
+		int min = INT_MAX;
+		for (j = i; j < len; j++) { 
+			if (arr[j] < min) {
+				min = arr[j];
+				x = j;
+			}
+		}
+
+		arr[x] = arr[i];
+		arr[i] = min;
+	}
+	
+	int *s_arr = (int *)malloc(sizeof(int) * len);
+	for (int i=0; i<len; i++) s_arr[i] = arr[i];
+
+	return s_arr;
+}
+
 void main() {
 	int len = 10;
 	int u_arr[] = {4, 1, 7, 9, 5, 8, 2, 0, 6, 3};
 
-	int *ans = bubbleSort(u_arr, len);
-	for (int i=0; i<len; i++) printf("%d ", ans[i]);
+	int *arr = selectionSort(u_arr, len);
+	for (int i=0; i<len; i++) printf("%d ", arr[i]);
 }
