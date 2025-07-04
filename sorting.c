@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
-int *bubbleSort(int arr[], int len) {
+int bubbleSort(int *arr, int len) {
 	int sorted = 0;
 	int j = len - 1;
 	
@@ -24,13 +24,10 @@ int *bubbleSort(int arr[], int len) {
 		}
 	}
 
-	int *s_arr = (int *)malloc(sizeof(int) * len);
-	for (int i=0; i<len; i++) s_arr[i] = arr[i];
-
-	return s_arr;
+	return 0;
 }
 
-int *selectionSort(int arr[], int len) {
+int selectionSort(int *arr, int len) {
 	int i, j, x;
 
 	for (i = 0; i < len; i++) {	
@@ -46,16 +43,15 @@ int *selectionSort(int arr[], int len) {
 		arr[i] = min;
 	}
 	
-	int *s_arr = (int *)malloc(sizeof(int) * len);
-	for (int i=0; i<len; i++) s_arr[i] = arr[i];
-
-	return s_arr;
+	return 0;
 }
 
 void main() {
 	int len = 10;
-	int u_arr[] = {4, 1, 7, 9, 5, 8, 2, 0, 6, 3};
+	int arr[] = {4, 1, 7, 9, 5, 8, 2, 0, 6, 3};
 
-	int *arr = selectionSort(u_arr, len);
-	for (int i=0; i<len; i++) printf("%d ", arr[i]);
+	if (selectionSort(arr, len) == 0)
+			for (int i = 0; i < len; i++)
+					printf("%d ", arr[i]);
+
 }
