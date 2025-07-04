@@ -46,11 +46,30 @@ int selectionSort(int *arr, int len) {
 	return 0;
 }
 
+int insertionSort(int *arr, int len) {
+	if (arr == NULL || len <= 1) return 0;
+
+	for (int i = 1; i < len; i++) {
+		int key = arr[i];
+		int j = i - 1;
+
+		while (j >= 0 && arr[j] > key) {
+			arr[j+1] = arr[j];
+			j--;
+
+		}
+
+		arr[j + 1] = key;
+	}
+
+	return 0;
+}
+
 void main() {
 	int len = 10;
 	int arr[] = {4, 1, 7, 9, 5, 8, 2, 0, 6, 3};
 
-	if (selectionSort(arr, len) == 0)
+	if (insertionSort(arr, len) == 0)
 			for (int i = 0; i < len; i++)
 					printf("%d ", arr[i]);
 
